@@ -5,8 +5,8 @@ function UnLockSection() {
     <>
       <section class="py-10 bg-white sm:py-16 lg:py-24">
         <div class="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
-          <div class="max-w-2xl mx-auto text-left sm:text-center">
-            <h2 class="text-3xl font-bold leading-loose text-black sm:text-4xl lg:text-5xl">
+          <div class="max-w-2xl mx-auto text-center sm:text-center">
+            <h2 class="text-3xl font-bold text-black sm:text-4xl lg:text-5xl">
               Unlock Your Earnings with iCommission Advance.
             </h2>
             <p class="max-w-xl mx-auto mt-4 text-base leading-relaxed text-gray-600 mb-12">
@@ -29,7 +29,7 @@ function UnLockSection() {
             id="why-us"
           >
             <div class="sm:p-2 sm:bg-white sm:border-2 sm:border-transparent sm:rounded-full ">
-              <div class="flex flex-col items-start sm:flex-row sm:justify-center">
+              <div class="flex items-start justify-center">
                 <Link href="/#contact">
                   <button
                     type="submit"

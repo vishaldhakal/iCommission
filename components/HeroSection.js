@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 function HeroSection() {
   return (
     <>
@@ -6,7 +8,7 @@ function HeroSection() {
           <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="grid items-center grid-cols-1 gap-12 lg:grid-cols-2">
               <div>
-                <h1 class="text-4xl font-bold text-black sm:text-6xl lg:text-7xl leading-loose">
+                <h1 class="text-4xl font-bold text-black sm:text-6xl lg:text-7xl ">
                   <div class="relative inline-flex">
                     <span class="absolute inset-x-0 bottom-0 border-b-[10px] border-[#f8ff2b]"></span>
                     <h1 class="relative text-4xl font-bold text-black sm:text-6xl lg:text-7xl">
@@ -14,7 +16,7 @@ function HeroSection() {
                     </h1>
                   </div>
                 </h1>
-                <h2 className="text-4xl font-bold text-black sm:text-6xl lg:text-4xl leading-loose mt-2">
+                <h2 className="text-4xl font-bold text-black sm:text-6xl lg:text-4xl mt-2">
                   When you can get paid instantly
                 </h2>
 
@@ -22,7 +24,7 @@ function HeroSection() {
                   Providing Access to Commissions Whenever Agents Need
                 </p>
 
-                <section className="w-[75%]">
+                <section className="w-[85%] lg:w-[75%]">
                   <div class="relative pt-3">
                     <span
                       class="absolute w-px h-full -ml-px bg-gray-200 top-8 left-12"
@@ -30,7 +32,7 @@ function HeroSection() {
                     ></span>
 
                     <div class="relative p-1 overflow-hidden bg-white border border-gray-200 rounded-2xl">
-                      <div class="flex items-start sm:items-center">
+                      <div class="flex items-center">
                         <div class="inline-flex items-center justify-center flex-shrink-0 text-md font-bold text-white bg-gray-900 w-14 h-14 rounded-xl font-pj">
                           1
                         </div>
@@ -47,7 +49,7 @@ function HeroSection() {
                     ></span>
 
                     <div class="relative p-1 overflow-hidden bg-white border border-gray-200 rounded-2xl">
-                      <div class="flex items-start sm:items-center">
+                      <div class="flex items-center">
                         <div class="inline-flex items-center justify-center flex-shrink-0 text-md font-bold text-white bg-gray-900 w-14 h-14 rounded-xl font-pj">
                           2
                         </div>
@@ -64,7 +66,7 @@ function HeroSection() {
                     ></span>
 
                     <div class="relative p-1 overflow-hidden bg-white border border-gray-200 rounded-2xl">
-                      <div class="flex items-start sm:items-center">
+                      <div class="flex items-center">
                         <div class="inline-flex items-center justify-center flex-shrink-0 text-md font-bold text-white bg-gray-900 w-14 h-14 rounded-xl font-pj">
                           3
                         </div>
@@ -77,10 +79,10 @@ function HeroSection() {
                 </section>
 
                 <div class="mt-10 sm:flex sm:items-center sm:space-x-8">
-                  <a
-                    href="#"
+                  <Link
+                    href="/#contact"
                     title=""
-                    class="inline-flex items-center justify-center px-10 py-4 text-base font-semibold text-white transition-all duration-200 bg-blue-700 hover:bg-blue-600 focus:bg-blue-600"
+                    class="flex items-center justify-center px-10 py-4 text-base font-semibold text-white transition-all duration-200 bg-blue-700 hover:bg-blue-600 focus:bg-blue-600"
                     role="button"
                   >
                     {" "}
@@ -98,41 +100,11 @@ function HeroSection() {
                         d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"
                       />
                     </svg>
-                  </a>
-
-                  <a
-                    href="#"
-                    title=""
-                    class="inline-flex items-center mt-6 text-base font-semibold transition-all duration-200 sm:mt-0 hover:opacity-80"
-                  >
-                    <svg
-                      class="w-10 h-10 mr-3"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        fill="#F97316"
-                        stroke="#F97316"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"
-                      />
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="1.5"
-                        d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                      />
-                    </svg>
-                    Watch video
-                  </a>
+                  </Link>
                 </div>
               </div>
 
-              <div>
+              <div className="hidden lg:block">
                 <img class="w-full" src="/heroimg.png" alt="" />
               </div>
             </div>

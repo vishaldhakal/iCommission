@@ -13,7 +13,11 @@ function WhyUs() {
                   </h2>
                 </div>
               </h2>
-              <img class="w-full" src="/arrow.png" alt="" />
+              <img
+                class="w-24 rotate-90 sm:w-full sm:rotate-0"
+                src="/arrow.png"
+                alt=""
+              />
             </div>
 
             <div class="space-y-5 lg:col-span-3">

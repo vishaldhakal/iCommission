@@ -11,46 +11,11 @@ function Navbar() {
             </Link>
           </div>
 
-          <button
-            type="button"
-            className="inline-flex p-1 text-black transition-all duration-200 border border-black lg:hidden focus:bg-gray-100 hover:bg-gray-100"
-          >
-            <svg
-              className="block w-6 h-6"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            </svg>
-
-            <svg
-              className="hidden w-6 h-6"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M6 18L18 6M6 6l12 12"
-              ></path>
-            </svg>
-          </button>
-
-          <div className="hidden ml-auto lg:flex lg:items-center lg:justify-center lg:space-x-10">
+          <div className="ml-auto lg:flex lg:items-center lg:justify-center lg:space-x-10">
             <Link
               href="/"
               title=""
-              className="text-base font-semibold text-black transition-all duration-200 hover:text-opacity-80"
+              className="hidden lg:inline text-base font-semibold text-black transition-all duration-200 hover:text-opacity-80"
             >
               {" "}
               Home{" "}
@@ -68,7 +33,7 @@ function Navbar() {
             <Link
               href="/faq"
               title=""
-              className="text-base font-semibold text-black transition-all duration-200 hover:text-opacity-80"
+              className="mx-4 md:mx-0 text-base font-semibold text-black transition-all duration-200 hover:text-opacity-80"
             >
               {" "}
               FAQ{" "}
@@ -77,7 +42,7 @@ function Navbar() {
             <Link
               href="#contact"
               title=""
-              className="inline-flex items-center justify-center px-5 py-2.5 text-base font-semibold text-black border-2 border-black hover:bg-black hover:text-white transition-all duration-200 focus:bg-black focus:text-white"
+              className="inline-flex items-center justify-center px-2 md:px-5 py-2.5 text-base font-semibold text-black border-2 border-black hover:bg-black hover:text-white transition-all duration-200 focus:bg-black focus:text-white"
               role="button"
             >
               {" "}

@@ -25,7 +25,7 @@ function Footer() {
               </Link>
             </div>
 
-            <div class="lg:col-span-3">
+            <div class="col-span-6 lg:col-span-3">
               <p class="text-base font-semibold text-gray-900">Useful Links</p>
 
               <ul class="mt-6 space-y-5">
@@ -53,7 +53,7 @@ function Footer() {
               </ul>
             </div>
 
-            <div class="lg:col-span-3">
+            <div class="col-span-6 lg:col-span-3">
               <p class="text-base font-semibold text-gray-900">Company</p>
 
               <p className="mt-6">
