@@ -30,7 +30,10 @@ function UnLockSection() {
           >
             <div class="sm:p-2 sm:bg-white sm:border-2 sm:border-transparent sm:rounded-full ">
               <div class="flex items-start justify-center">
-                <Link href="/#contact">
+                <Link
+                  href="https://form.typeform.com/to/O3Tv7VA6"
+                  target="_blank"
+                >
                   <button
                     type="submit"
                     class="inline-flex items-center justify-center w-auto px-4 py-4 mt-4 font-semibold text-white transition-all duration-200 bg-blue-600 border border-transparent rounded-full sm:ml-4 sm:mt-0 sm:w-auto hover:bg-blue-700 focus:bg-blue-700"

@@ -17,11 +17,12 @@ function Footer() {
               </p>
 
               <Link
-                href="/#contact"
+                href="https://form.typeform.com/to/O3Tv7VA6"
+                target="_blank"
                 title=""
                 class="inline-flex items-center justify-center px-6 py-4 font-semibold text-white transition-all duration-200 bg-blue-600 rounded-md hover:bg-blue-700 focus:bg-blue-700 mt-7"
               >
-                Get Started Now !
+                Join our waitlist
               </Link>
             </div>
 

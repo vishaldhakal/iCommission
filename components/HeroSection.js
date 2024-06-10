@@ -79,7 +79,7 @@ function HeroSection() {
                 </section>
 
                 <div class="mt-10 sm:flex sm:items-center sm:space-x-8">
-                  <Link
+                  {/* <Link
                     href="/#contact"
                     title=""
                     class="flex items-center justify-center px-10 py-4 text-base font-semibold text-white transition-all duration-200 bg-blue-700 hover:bg-blue-600 focus:bg-blue-600"
@@ -87,6 +87,29 @@ function HeroSection() {
                   >
                     {" "}
                     Get Started Now{" "}
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      class="bi bi-arrow-right ms-3"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"
+                      />
+                    </svg>
+                  </Link> */}
+                  <Link
+                    href="https://form.typeform.com/to/O3Tv7VA6"
+                    target="_blank"
+                    title=""
+                    class="flex items-center justify-center px-10 py-4 text-base font-semibold text-white transition-all duration-200 bg-blue-700 hover:bg-blue-600 focus:bg-blue-600"
+                    role="button"
+                  >
+                    {" "}
+                    Join our waitlist{" "}
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="16"
