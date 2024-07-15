@@ -102,14 +102,13 @@ function HeroSection() {
                     </svg>
                   </Link> */}
                   <Link
-                    href="https://form.typeform.com/to/O3Tv7VA6"
+                    href="https://form.typeform.com/to/PSyy4dAX"
                     target="_blank"
                     title=""
                     class="flex items-center justify-center px-10 py-4 text-base font-semibold text-white transition-all duration-200 bg-blue-700 hover:bg-blue-600 focus:bg-blue-600"
                     role="button"
                   >
-                    {" "}
-                    Join our waitlist{" "}
+                    Start Now
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="16"

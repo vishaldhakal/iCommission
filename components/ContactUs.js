@@ -1,4 +1,39 @@
+"use client";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { sendEmail } from "@/actions/resend";
+
 function ContactUs() {
+  const [submitbtn, setSubmitbtn] = useState("Send a message");
+  const router = useRouter();
+  const [credentials, setCredentials] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    message: "",
+  });
+  const handleChange = (e) => {
+    const { id, value } = e.target;
+    setCredentials((prevState) => ({
+      ...prevState,
+      [id]: value,
+    }));
+  };
+  const getArrayFromObj = (obj) => {
+    let arr = [];
+    for (const [key, value] of Object.entries(obj)) {
+      arr.push(`${key.toUpperCase()}: ${value}`);
+    }
+    console.log(arr);
+    return arr;
+  };
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    sendEmail({ content: getArrayFromObj(credentials) })
+      .then((res) => router.push("/thank-you"))
+      .catch((err) => console.log(err));
+  };
   return (
     <>
       <section class="py-12 bg-gray-50 sm:py-16 lg:py-20 xl:py-24" id="contact">
@@ -40,7 +75,11 @@ function ContactUs() {
                 <h3 class="text-2xl font-semibold tracking-tight text-gray-900 sm:text-3xl">
                   Send us a message
                 </h3>
-                <form action="#" method="POST" class="mt-8 space-y-6">
+                <form
+                  method="POST"
+                  onSubmit={(e) => handleFormSubmit(e)}
+                  class="mt-8 space-y-6"
+                >
                   <div>
                     <label for="fullName" class="sr-only">
                       {" "}
@@ -49,9 +88,11 @@ function ContactUs() {
                     <div>
                       <input
                         type="text"
-                        name="fullName"
-                        id="fullName"
-                        placeholder="Your name"
+                        placeholder="Name"
+                        name="name"
+                        id="name"
+                        value={credentials.name}
+                        onChange={(e) => handleChange(e)}
                         class="block w-full py-4 text-base text-gray-900 placeholder-gray-600 bg-white border-2 focus:outline-none focus:border-blue-600 focus:ring-0 p-2 rounded-md"
                       />
                     </div>
@@ -65,9 +106,12 @@ function ContactUs() {
                     <div>
                       <input
                         type="email"
+                        aria-describedby="emailHelp"
+                        placeholder="Your email"
                         name="email"
                         id="email"
-                        placeholder="Email address"
+                        value={credentials.email}
+                        onChange={(e) => handleChange(e)}
                         class="block w-full py-4 text-base text-gray-900 placeholder-gray-600 bg-white border-2 focus:outline-none focus:border-blue-600 focus:ring-0 rounded-md p-2"
                       />
                     </div>
@@ -80,10 +124,13 @@ function ContactUs() {
                     </label>
                     <div>
                       <input
-                        type="tel"
+                        type="text"
                         name="phone"
                         id="phone"
-                        placeholder="Phone number"
+                        placeholder="Phone"
+                        value={credentials.phone}
+                        onChange={(e) => handleChange(e)}
+                        required={true}
                         class="block w-full py-4 text-base text-gray-900 placeholder-gray-600 bg-white border-2 focus:outline-none focus:border-blue-600 focus:ring-0 rounded-md p-2"
                       />
                     </div>
@@ -96,21 +143,23 @@ function ContactUs() {
                     </label>
                     <div>
                       <textarea
-                        name="email"
-                        id="email"
-                        placeholder="Write your message"
-                        rows="4"
+                        id="message"
+                        name="message"
+                        rows="3"
+                        cols="50"
+                        placeholder="Enter your message here"
+                        value={credentials.message}
+                        onChange={(e) => handleChange(e)}
                         class="block w-full py-4 text-base text-gray-900 placeholder-gray-600 bg-white border-2 focus:outline-none focus:border-blue-600 focus:ring-0 p-2 rounded-md"
                       ></textarea>
                     </div>
                   </div>
 
-                  <button
+                  <input
                     type="submit"
+                    value={submitbtn}
                     class="inline-flex items-center justify-center w-full px-12 py-4 text-base font-medium text-white transition-all duration-200 bg-blue-700 border border-transparent rounded-xl hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-700"
-                  >
-                    Send message
-                  </button>
+                  />
                 </form>
               </div>
             </div>

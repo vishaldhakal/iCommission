@@ -43,8 +43,9 @@ function GetStarted() {
             </p>
 
             <Link
-              href="/#contact"
+              href="https://form.typeform.com/to/PSyy4dAX"
               title=""
+              target="_blank"
               class="inline-flex items-center justify-center px-4 py-4 mt-8 font-semibold text-white transition-all duration-200 bg-blue-600 border border-transparent rounded-md lg:mt-12 hover:bg-blue-700 focus:bg-blue-700"
               role="button"
             >

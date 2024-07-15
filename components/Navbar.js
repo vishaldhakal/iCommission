@@ -40,13 +40,14 @@ function Navbar() {
             </Link>
 
             <Link
-              href="#contact"
+              href="https://form.typeform.com/to/PSyy4dAX"
+              target="_blank"
               title=""
               className="inline-flex items-center justify-center px-2 md:px-5 py-2.5 text-base font-semibold text-black border-2 border-black hover:bg-black hover:text-white transition-all duration-200 focus:bg-black focus:text-white"
               role="button"
             >
               {" "}
-              Contact Now{" "}
+              Start Now{" "}
             </Link>
           </div>
         </div>
