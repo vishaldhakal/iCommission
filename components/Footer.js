@@ -17,8 +17,7 @@ function Footer() {
               </p>
 
               <Link
-                href="https://form.typeform.com/to/PSyy4dAX"
-                target="_blank"
+                href="#contact"
                 title=""
                 class="inline-flex items-center justify-center px-6 py-4 font-semibold text-white transition-all duration-200 bg-blue-600 rounded-md hover:bg-blue-700 focus:bg-blue-700 mt-7"
               >
@@ -49,6 +48,16 @@ function Footer() {
                   >
                     {" "}
                     FAQ{" "}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/privacy-policy"
+                    title=""
+                    class="flex text-sm text-gray-800 transition-all duration-200 hover:text-orange-600 focus:text-orange-600"
+                  >
+                    {" "}
+                    Privacy Policy{" "}
                   </Link>
                 </li>
               </ul>

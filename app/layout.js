@@ -8,9 +8,14 @@ import GoogleAnalytics from "./GoogleAnalytics";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "iCommission Advance - Unlock Your Earnings with iCommission Advance",
+  title: "iCommission | Best Commission Advance Company For Realtors",
   description:
-    "Are you tired of waiting for your commission payouts? With iCommission, you can access your hard-earned money immediately! Join our waitlist today and get a $25 Amazon Gift Card upon your first successful iCommission Advance!",
+    "Are you tired of waiting for your commission payouts? iCommission provides reliable & fast commission advance services to real estate agents & brokers.",
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon-16x16.png",
+    apple: "/apple-touch-icon.png",
+  },
 };
 
 export default function RootLayout({ children }) {

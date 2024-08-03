@@ -102,8 +102,7 @@ function HeroSection() {
                     </svg>
                   </Link> */}
                   <Link
-                    href="https://form.typeform.com/to/PSyy4dAX"
-                    target="_blank"
+                    href="#contact"
                     title=""
                     class="flex items-center justify-center px-10 py-4 text-base font-semibold text-white transition-all duration-200 bg-blue-700 hover:bg-blue-600 focus:bg-blue-600"
                     role="button"

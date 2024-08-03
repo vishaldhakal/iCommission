@@ -1,10 +1,10 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { sendEmail } from "@/actions/resend";
+import axios from "axios";
 
 function ContactUs() {
-  const [submitbtn, setSubmitbtn] = useState("Send a message");
+  const [submitbtn, setSubmitbtn] = useState("Submit");
   const router = useRouter();
   const [credentials, setCredentials] = useState({
     name: "",
@@ -30,7 +30,23 @@ function ContactUs() {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    sendEmail({ content: getArrayFromObj(credentials) })
+    let data = {
+      service_id: "service_huhb31k",
+      template_id: "template_jwt9ywe",
+      user_id: "pVaO-h-aD2g8Ul524",
+      template_params: credentials,
+    };
+
+    axios
+      .post(
+        "https://api.emailjs.com/api/v1.0/email/send",
+        JSON.stringify(data),
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
       .then((res) => router.push("/thank-you"))
       .catch((err) => console.log(err));
   };
@@ -72,8 +88,8 @@ function ContactUs() {
 
             <div class="bg-white shadow-xl rounded-2xl">
               <div class="p-6 sm:p-10">
-                <h3 class="text-2xl font-semibold tracking-tight text-gray-900 sm:text-3xl">
-                  Send us a message
+                <h3 class="text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl">
+                  Get Your Free Quote Now
                 </h3>
                 <form
                   method="POST"
@@ -147,7 +163,7 @@ function ContactUs() {
                         name="message"
                         rows="3"
                         cols="50"
-                        placeholder="Enter your message here"
+                        placeholder="Enter your transaction & requested advance amount here"
                         value={credentials.message}
                         onChange={(e) => handleChange(e)}
                         class="block w-full py-4 text-base text-gray-900 placeholder-gray-600 bg-white border-2 focus:outline-none focus:border-blue-600 focus:ring-0 p-2 rounded-md"
@@ -158,7 +174,7 @@ function ContactUs() {
                   <input
                     type="submit"
                     value={submitbtn}
-                    class="inline-flex items-center justify-center w-full px-12 py-4 text-base font-medium text-white transition-all duration-200 bg-blue-700 border border-transparent rounded-xl hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-700"
+                    class="inline-flex items-center justify-center w-full px-12 py-4 text-base font-medium text-white transition-all duration-200 bg-blue-700 border border-transparent rounded-xl hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-700 cursor-pointer"
                   />
                 </form>
               </div>
