@@ -18,15 +18,6 @@ export default function Affiliate() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (
-      !formData.name ||
-      !formData.email ||
-      !formData.phone ||
-      !formData.message
-    ) {
-      swal("Error", "All fields are required", "error");
-      return;
-    }
     let datas = {
       affiliate_id: searchParams.get("ref"),
       name: formData.name,
