@@ -47,7 +47,7 @@ export default function Affiliate() {
     const data = await response.json();
     if (data.success) {
       swal("Success", "Form submitted successfully", "success");
-      setFormData({ name: "", email: "", message: "" });
+      setFormData({ name: "", email: "", message: "", phone: "" });
     } else {
       swal("Error", "Invalid Affiliate Link", "error");
     }
