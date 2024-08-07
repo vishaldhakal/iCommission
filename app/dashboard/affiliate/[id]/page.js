@@ -10,15 +10,23 @@ import {
 } from "@/components/ui/table";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { User, Mail, Phone, MessageSquare, Calendar } from "lucide-react";
+import {
+  User,
+  Mail,
+  Phone,
+  MessageSquare,
+  Calendar,
+  MoveLeft,
+} from "lucide-react";
+import Link from "next/link";
 
-export default function SubmissionsDashboard() {
+export default function SubmissionsDashboard({ params }) {
   const [submissions, setSubmissions] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch("https://admin.icommission.ca/api/all-submissions/")
+    fetch("https://admin.icommission.ca/api/affiliate-submissions/" + params.id)
       .then((response) => {
         if (!response.ok) {
           throw new Error("Network response was not ok");
@@ -41,7 +49,12 @@ export default function SubmissionsDashboard() {
 
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-3xl font-bold mb-6">Submissions Dashboard</h1>
+      <Link href="/dashboard/affiliate">
+        <h1 className="text-sm font-normal mb-6">
+          <MoveLeft className="w-4 h-4 mr-2 inline-block" />
+          Back to affiliate
+        </h1>
+      </Link>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
         <Card>
@@ -59,7 +72,7 @@ export default function SubmissionsDashboard() {
 
       <Card>
         <CardHeader>
-          <CardTitle>Recent Submissions</CardTitle>
+          <CardTitle>All Submissions</CardTitle>
         </CardHeader>
         <CardContent>
           <Table>

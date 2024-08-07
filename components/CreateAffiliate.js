@@ -15,7 +15,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import swal from "sweetalert";
 
-export function CreateEditAffiliate() {
+export function CreateAffiliate() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",

@@ -14,7 +14,7 @@ import Link from "next/link";
 import { CreateAffiliate } from "@/components/CreateAffiliate";
 import swal from "sweetalert";
 
-export default function Dashboard() {
+export default function Affiliate() {
   const [affiliates, setAffiliates] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isCopied, setIsCopied] = useState(false);
