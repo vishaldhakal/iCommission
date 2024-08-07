@@ -1,120 +1,153 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import { Copy, Check } from "lucide-react";
+import { useState, useEffect } from "react";
 import {
   Table,
-  TableHead,
   TableBody,
-  TableRow,
   TableCell,
+  TableHead,
   TableHeader,
+  TableRow,
 } from "@/components/ui/table";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { User, Mail, Phone, MessageSquare, Calendar } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { CreateEditAffiliate } from "@/components/CreateEditAffiliate";
+import swal from "sweetalert";
 
-export default function SubmissionsDashboard() {
-  const [submissions, setSubmissions] = useState([]);
-  const [loading, setLoading] = useState(true);
+export default function Dashboard() {
+  const [affiliates, setAffiliates] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isCopied, setIsCopied] = useState(false);
+  const [isCopiedId, setIsCopiedId] = useState(null);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch("https://admin.icommission.ca/api/all-submissions/")
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        setSubmissions(data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        setError("Error fetching data: " + error.message);
-        setLoading(false);
-      });
+    fetchAffiliates();
   }, []);
 
-  if (loading) return <div className="text-center py-10">Loading...</div>;
+  const fetchAffiliates = async () => {
+    try {
+      setIsLoading(true);
+      const response = await fetch(
+        "https://admin.icommission.ca/api/affiliates/"
+      );
+      if (!response.ok) {
+        throw new Error("Failed to fetch affiliates");
+      }
+      const data = await response.json();
+      setAffiliates(data.results);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  //delete affiliates
+  const deleteAffiliate = async (id) => {
+    try {
+      const response = await fetch(
+        `https://admin.icommission.ca/api/affiliates/${id}/`,
+        {
+          method: "DELETE",
+        }
+      );
+      if (!response.ok) {
+        swal("Error", "Failed to delete affiliate", "error");
+      }
+      swal("Success", "Affiliate deleted successfully", "success");
+      fetchAffiliates();
+    } catch (err) {
+      setError(err.message);
+    }
+  };
+
+  const copyToClipboard = async (text, id) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      setIsCopied(true);
+      setIsCopiedId(id);
+      setTimeout(() => setIsCopied(false), 2000); // Reset after 2 seconds
+    } catch (err) {
+      console.error("Failed to copy text: ", err);
+    }
+  };
+
+  if (isLoading) return <div className="text-center mt-8">Loading...</div>;
   if (error)
-    return <div className="text-center py-10 text-red-500">{error}</div>;
+    return <div className="text-center mt-8 text-red-500">Error: {error}</div>;
 
   return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-3xl font-bold mb-6">Submissions Dashboard</h1>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">
-              Total Submissions
-            </CardTitle>
-            <Badge>{submissions.length}</Badge>
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">{submissions.length}</div>
-          </CardContent>
-        </Card>
+    <div className="container mx-auto p-4 mt-5">
+      <div className="flex justify-between items-center">
+        <div className="mb-6 font-bold text-md">
+          You Have Total {affiliates.length} Affiliates
+        </div>
+        <div className="mb-4">
+          <CreateEditAffiliate />
+        </div>
       </div>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>Recent Submissions</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <Table>
-            <TableHeader>
+      <Table className="border rounded-lg">
+        <TableHeader className="rounded-md">
+          <TableRow>
+            <TableHead>Name</TableHead>
+            <TableHead>Email</TableHead>
+            <TableHead>Affiliate Link</TableHead>
+            <TableHead>Created At</TableHead>
+            <TableHead>Actions</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {affiliates &&
+            affiliates.map((affiliate) => (
               <TableRow>
-                <TableHead>Name</TableHead>
-                <TableHead>Email</TableHead>
-                <TableHead>Phone</TableHead>
-                <TableHead>Message</TableHead>
-                <TableHead>Created At</TableHead>
-                <TableHead>Affiliate</TableHead>
+                <TableCell>{affiliate.name}</TableCell>
+                <TableCell>{affiliate.email}</TableCell>
+                <TableCell className="flex items-center">
+                  {`https://icommission.ca/landing?ref=${affiliate.id}`}
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    onClick={() =>
+                      copyToClipboard(
+                        `https://icommission.ca/landing?ref=${affiliate.id}`,
+                        affiliate.id
+                      )
+                    }
+                    className="w-6 h-6 p-0 ms-3"
+                  >
+                    {isCopied && affiliate.id === isCopiedId ? (
+                      <Check className="h-3 w-3" />
+                    ) : (
+                      <Copy className="h-3 w-3" />
+                    )}
+                  </Button>
+                </TableCell>
+                <TableCell>
+                  {new Date(affiliate.created_at).toLocaleDateString()}
+                </TableCell>
+                <TableCell>
+                  <Button variant="outline" size="sm" className="mr-2">
+                    Edit
+                  </Button>
+                  <Link href={`/affiliate/${affiliate.id}/`}>
+                    <Button variant="outline" size="sm" className="mr-2">
+                      View details
+                    </Button>
+                  </Link>
+                  <Button
+                    variant="destructive"
+                    size="sm"
+                    onClick={() => deleteAffiliate(affiliate.id)}
+                  >
+                    Delete
+                  </Button>
+                </TableCell>
               </TableRow>
-            </TableHeader>
-            <TableBody>
-              {submissions.map((submission) => (
-                <TableRow key={submission.id}>
-                  <TableCell className="font-medium">
-                    <div className="flex items-center">
-                      <User className="mr-2" size={16} />
-                      {submission.name}
-                    </div>
-                  </TableCell>
-                  <TableCell>
-                    <div className="flex items-center">
-                      <Mail className="mr-2" size={16} />
-                      {submission.email}
-                    </div>
-                  </TableCell>
-                  <TableCell>
-                    <div className="flex items-center">
-                      <Phone className="mr-2" size={16} />
-                      {submission.phone}
-                    </div>
-                  </TableCell>
-                  <TableCell>
-                    <div className="flex items-center">
-                      <MessageSquare className="mr-2" size={16} />
-                      {submission.message.slice(0, 20)}...
-                    </div>
-                  </TableCell>
-                  <TableCell>
-                    <div className="flex items-center">
-                      <Calendar className="mr-2" size={16} />
-                      {new Date(submission.created_at).toLocaleString()}
-                    </div>
-                  </TableCell>
-                  <TableCell>
-                    <Badge variant="outline">{submission.affiliate.name}</Badge>
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </CardContent>
-      </Card>
+            ))}
+        </TableBody>
+      </Table>
     </div>
   );
 }
