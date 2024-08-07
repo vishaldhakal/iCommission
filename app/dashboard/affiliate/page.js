@@ -13,6 +13,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { CreateAffiliate } from "@/components/CreateAffiliate";
 import swal from "sweetalert";
+import { EditAffiliate } from "@/components/EditAffiliate";
 
 export default function Affiliate() {
   const [affiliates, setAffiliates] = useState([]);
@@ -20,10 +21,11 @@ export default function Affiliate() {
   const [isCopied, setIsCopied] = useState(false);
   const [isCopiedId, setIsCopiedId] = useState(null);
   const [error, setError] = useState(null);
+  const [edited, setEdited] = useState(false);
 
   useEffect(() => {
     fetchAffiliates();
-  }, []);
+  }, [edited]);
 
   const fetchAffiliates = async () => {
     try {
@@ -128,12 +130,14 @@ export default function Affiliate() {
                   {new Date(affiliate.created_at).toLocaleDateString()}
                 </TableCell>
                 <TableCell>
-                  <Button variant="outline" size="sm" className="mr-2">
-                    Edit
-                  </Button>
+                  <EditAffiliate
+                    affiliate_id={affiliate.id}
+                    setEdited={setEdited}
+                    edited={edited}
+                  />
                   <Link href={`/dashboard/affiliate/${affiliate.id}/`}>
                     <Button variant="outline" size="sm" className="mr-2">
-                      View details
+                      View Submissions
                     </Button>
                   </Link>
                   <Button
