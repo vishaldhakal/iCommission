@@ -71,3 +71,7 @@
 *{
   scroll-behavior: smooth;
 }
+
+.trustpilot-widget body{
+  min-width: 65% !important;
+}
