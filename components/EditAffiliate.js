@@ -12,6 +12,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import swal from "sweetalert";
+import FloatingLabelInput from "./FloatingLabelInput";
 
 export function EditAffiliate({ affiliate_id, setEdited, edited }) {
   const [formData, setFormData] = useState({
@@ -92,30 +93,21 @@ export function EditAffiliate({ affiliate_id, setEdited, edited }) {
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid grid-cols-1 gap-4">
                 <div className="space-y-2">
-                  <Label htmlFor="name">
-                    Name <span className="text-red-500">*</span>
-                  </Label>
-                  <Input
-                    id="name"
+                  <FloatingLabelInput
+                    label="Name"
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    required
                   />
                 </div>
               </div>
               <div className="grid grid-cols-1 gap-4">
                 <div className="space-y-2">
-                  <Label htmlFor="email">
-                    Email <span className="text-red-500">*</span>
-                  </Label>
-                  <Input
-                    id="email"
+                  <FloatingLabelInput
+                    label="Email"
                     name="email"
-                    type="email"
                     value={formData.email}
                     onChange={handleChange}
-                    required
                   />
                 </div>
               </div>

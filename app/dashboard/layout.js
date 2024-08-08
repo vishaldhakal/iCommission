@@ -8,6 +8,17 @@ const navItems = [
   { href: "/settings", label: "Settings", icon: Settings },
 ];
 
+export const metadata = {
+  title: "Admin Dashboard - iCommission",
+  description:
+    "Admin dashboard for iCommission, the best commission advance company for realtors.",
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon-16x16.png",
+    apple: "/apple-touch-icon.png",
+  },
+};
+
 export default function Layout({ children }) {
   return (
     <div className="flex h-screen">

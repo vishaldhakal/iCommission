@@ -86,7 +86,7 @@ export default function Affiliate() {
           You Have Total {affiliates.length} Affiliates
         </div>
         <div className="mb-4">
-          <CreateAffiliate />
+          <CreateAffiliate edited={edited} setEdited={setEdited} />
         </div>
       </div>
 

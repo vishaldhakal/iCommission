@@ -5,17 +5,15 @@ import {
   DialogClose,
   DialogContent,
   DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { useState } from "react";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import swal from "sweetalert";
+import FloatingLabelInput from "./FloatingLabelInput";
 
-export function CreateAffiliate() {
+export function CreateAffiliate({ setEdited, edited }) {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -47,6 +45,7 @@ export function CreateAffiliate() {
         throw new Error("Same email already exists");
       }
       swal("Success", "Affiliate created successfully", "success");
+      setEdited(!edited);
     } catch (error) {
       swal("Error", error.message, "error");
     }
@@ -69,30 +68,23 @@ export function CreateAffiliate() {
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid grid-cols-1 gap-4">
                 <div className="space-y-2">
-                  <Label htmlFor="name">
-                    Name <span className="text-red-500">*</span>
-                  </Label>
-                  <Input
-                    id="name"
-                    name="name"
+                  <FloatingLabelInput
+                    label={"Name"}
+                    name={"name"}
                     value={formData.name}
                     onChange={handleChange}
-                    required
+                    required={true}
                   />
                 </div>
               </div>
               <div className="grid grid-cols-1 gap-4">
                 <div className="space-y-2">
-                  <Label htmlFor="email">
-                    Email <span className="text-red-500">*</span>
-                  </Label>
-                  <Input
-                    id="email"
-                    name="email"
-                    type="email"
+                  <FloatingLabelInput
+                    label={"Email"}
+                    name={"email"}
                     value={formData.email}
                     onChange={handleChange}
-                    required
+                    required={true}
                   />
                 </div>
               </div>
